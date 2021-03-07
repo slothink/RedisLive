@@ -1,5 +1,6 @@
+import sys
 from decimal import Decimal
-from BaseController import BaseController
+from .BaseController import BaseController
 import tornado.ioloop
 import tornado.web
 import re
@@ -12,6 +13,8 @@ class InfoController(BaseController):
         server = self.get_argument("server")
         redis_info = self.stats_provider.get_info(server)
         databases=[]
+
+        sys.stdout.write(redis_info);
 
         for key in sorted(redis_info.keys()):
             if key.startswith("db"):

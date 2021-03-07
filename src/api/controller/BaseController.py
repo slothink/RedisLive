@@ -3,7 +3,6 @@ import tornado.ioloop
 import tornado.web
 import dateutil.parser
 
-
 class BaseController(tornado.web.RequestHandler):
 
     stats_provider = RedisLiveDataProvider.get_provider()

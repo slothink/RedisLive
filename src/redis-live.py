@@ -30,7 +30,12 @@ if __name__ == "__main__":
     (r"/(.*)", BaseStaticFileHandler, {"path": "www"})
     ]
 
-    server_settings = {'debug': options.debug}
+    server_settings = {'debug': options.debug,
+                       'static_hash_cache': False,
+                       }
     application = tornado.web.Application(handlers, **server_settings)
+    # application = tornado.web.Application(handlers, {
+    #     'debug': True
+    # })
     application.listen(options.port)
     tornado.ioloop.IOLoop.instance().start()
